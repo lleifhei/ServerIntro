@@ -1,34 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MyServer</title>
-    
-</head>
-<body>
+  </head>
+  <body>
     <h1>HTML Route</h1>
     <p>My Pets</p>
     <script>
-        async function fetchPets() {
-            try {
-                const response = await fetch('/api/pets');
-                const pets = await response.json();
-                const petsList = document.getElementById('pets-list');
+      async function fetchPets() {
+        try {
+          const response = await fetch("/api/pets");
+          const pets = await response.json();
+          const petsList = document.getElementById("pets-list");
 
-                pets.forEach(pet => {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = `${pet.name} - ${pet.species}`;
-                    petsList.appendChild(listItem);
-                });
-            } catch (error) {
-                console.error('Error fetching pets:', error);
-            }
+          pets.forEach((pet) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = `${pet.name} - ${pet.species}`;
+            petsList.appendChild(listItem);
+          });
+        } catch (error) {
+          console.error("Error fetching pets:", error);
         }
+      }
 
-        document.addEventListener('DOMContentLoaded', fetchPets);
+      document.addEventListener("DOMContentLoaded", fetchPets);
     </script>
 
     <ul id="pets-list"></ul>
-</body>
+  </body>
 </html>
