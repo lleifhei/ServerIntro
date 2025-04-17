@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pets</title>
+</head>
+<body>
+    <h1>Pets</h1>
+    <p>Here is a list of my pets:</p>
+    <ul id="pets-list">
+    <script>
+        async function renderPets() {
+            const response = await fetch('/api/pets');
+            const pets = await response.json();
+            console.log(pets);
+            const petsList = document.getElementById('pets-list');
+            pets.forEach(pet => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${pet.name} (${pet.species})`;
+                petsList.appendChild(listItem);
+            });
+        }
+        renderPets();
+    </script>
+    </ul>
+    
+</body>
+</html>
